@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import transaction from '../types/transaction';
 
 const TRANSACTIONS: transaction[] = [
@@ -31,8 +31,8 @@ const transactionSlice = createSlice({
     transactions: TRANSACTIONS,
   },
   reducers: {
-    addTransaction(state, action: { payload: { transaction: transaction } }) {
-      state.transactions.push(action.payload.transaction);
+    addTransaction(state, action: PayloadAction<transaction>) {
+      state.transactions.push(action.payload);
     },
   },
 });

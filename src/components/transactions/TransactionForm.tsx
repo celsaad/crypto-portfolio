@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../store';
 import { transactionActions } from '../../store/transaction-slice';
 import transaction from '../../types/transaction';
 import Box from '../UI/Box';
@@ -9,7 +9,7 @@ import SwitchToggle from '../UI/SwitchToggle';
 import classes from './TransactionForm.module.css';
 
 const TransactionForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const operationRef = useRef<null | HTMLInputElement>(null);
@@ -43,11 +43,7 @@ const TransactionForm = () => {
       value: parseFloat(priceRef.current!.value),
     };
 
-    dispatch(
-      transactionActions.addTransaction({
-        transaction: newTransaction,
-      })
-    );
+    dispatch(transactionActions.addTransaction(newTransaction));
 
     navigate('/transactions');
   };

@@ -1,10 +1,8 @@
-import { useSelector } from 'react-redux';
 import TransactionList from '../components/transactions/TransactionList';
-import { RootState } from '../store';
-import transaction from '../types/transaction';
+import { useAppSelector } from '../store';
 
 const Transactions = () => {
-  const transactions = useSelector<RootState, transaction[]>((state) => state.transaction.transactions);
+  const transactions = useAppSelector((state) => state.transaction.transactions);
   return (
     <>
       <h1>Transactions</h1>
