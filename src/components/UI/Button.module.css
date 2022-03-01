@@ -1,0 +1,20 @@
+.btn {
+  width: 90px;
+  height: 40px;
+  border: unset;
+  background-color: #a6ddd1;
+  color: #220C10;
+  border-radius: 3px;
+}
+
+.btn:hover {
+  background-color: #B5E3D9;
+}
+
+.btn:active {
+  background-color: #1C4A40;
+}
+
+.btn span {
+  margin: 0 0.5rem;
+}
