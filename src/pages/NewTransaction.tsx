@@ -1,10 +1,13 @@
+import RequireAuth from '../components/login/RequireAuth';
 import TransactionForm from '../components/transactions/TransactionForm';
 
 const NewTransaction = () => {
   return (
-    <section>
-      <TransactionForm />
-    </section>
+    <RequireAuth>
+      <section>
+        <TransactionForm />
+      </section>
+    </RequireAuth>
   );
 };
 

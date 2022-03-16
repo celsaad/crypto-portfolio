@@ -1,0 +1,22 @@
+.form {
+  width: 250px;
+  margin: auto;
+}
+
+.form .line {
+  padding: 5px;
+}
+
+.form .line label {
+  display: flex;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.form .line input {
+  width: 200px;
+  height: 30px;
+  border: 0.7px solid black;
+  border-radius: 7px;
+  padding: 0 16px;
+}

@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import classes from './Header.module.css';
 
 const getMenuItemClass = (isActive:boolean) => {
@@ -13,7 +14,19 @@ const getMenuItemClass = (isActive:boolean) => {
   return result;
 };
 
-const Header = () => {
+const Header:React.FC = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleAuthLink = () => {
+    if (!auth.user) {
+      navigate('login');
+      return;
+    }
+
+    auth.logout(() => {navigate('/')});
+  };
+
   return (
     <header className={classes.header}>
       <nav>
@@ -23,6 +36,9 @@ const Header = () => {
           </li>
           <li>
             <NavLink className={({ isActive }) => getMenuItemClass(isActive)} to='/transactions'>Transactions</NavLink>
+          </li>
+          <li>
+            <div className={getMenuItemClass(false)} onClick={handleAuthLink}>{auth.user ? 'Logout' : 'Login'}</div>
           </li>
         </ul>
       </nav>

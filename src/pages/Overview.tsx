@@ -1,3 +1,4 @@
+import RequireAuth from '../components/login/RequireAuth';
 import PositionGrid from '../components/portfolio/PositionGrid';
 import position from '../types/position';
 
@@ -27,10 +28,10 @@ const POSITIONS: position[] = [
 
 const Overview = () => {
   return (
-    <>
+    <RequireAuth>
       <h1>Portfolio Overview</h1>
       <PositionGrid positions={POSITIONS} />
-    </>
+    </RequireAuth>
   );
 };
 
